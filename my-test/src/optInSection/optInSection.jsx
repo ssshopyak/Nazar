@@ -1,40 +1,31 @@
 import "./optInSection.css";
-export default function optInSection() {
-  // /*
-  // const form = document.getElementById('message-form');
-  // const nameInput = document.getElementById('message-input');
-  // const emailInput = document.querySelector('.OptSection1:last-child');
-  // const surnameInput = document.querySelector('.OptSection2:first-child');
-  // const phoneInput = document.querySelector('.OptSection2:last-child');
-  // const messageInput = document.getElementById('inputTellUs');
+import { useState } from "react";
+export default function OptInSection() {
 
-  // const telegramBotToken = '6160009452:AAFOsemyNNyNWhCWHP_NXuuKeknkzllDQrI';
-  // const telegramChatId = '-665752092';
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [surname, setSurname] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const telegramBotToken = '6160009452:AAFOsemyNNyNWhCWHP_NXuuKeknkzllDQrI';
+  const telegramChatId = '-665752092';
 
-  // function sendMessageToTelegramBot(name, email, surname, phone, message) {
-  //   const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+  function sendMessageToTelegramBot(name, email, surname, phone, message) {
+    const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
-  //   const data = new FormData();
-  //   data.append('chat_id', telegramChatId);
-  //   data.append('text', `Ім'я: ${name}\nEmail: ${email}\nПрізвище: ${surname}\nНомер телефону: ${phone}\nКоротко про вас: ${message}`);
+    const data = new FormData();
+    data.append('chat_id', telegramChatId);
+    data.append('text', `Ім'я: ${name}\nEmail: ${email}\nПрізвище: ${surname}\nНомер телефону: ${phone}\nКоротко про вас: ${message}`);
 
-  //   const request = new XMLHttpRequest();
-  //   request.open('POST', url);
-  //   request.send(data);
-  // }
+    const request = new XMLHttpRequest();
+    request.open('POST', url);
+    request.send(data);
+  }
 
-  // form.addEventListener('submit', function(event) {
-  //   event.preventDefault();
-  //   const name = nameInput.value;
-  //   const email = emailInput.value;
-  //   const surname = surnameInput.value;
-  //   const phone = phoneInput.value;
-  //   const message = messageInput.value;
-
-  //   sendMessageToTelegramBot(name, email, surname, phone, message);
-
-  //   form.reset();
-  // });*/
+  const formHandler = (e) => {
+    e.preventDefault();
+    sendMessageToTelegramBot(name, email, surname, phone, message);
+  };
   return (
     <div id="optInSection">
       <p id="optInText">Приєднюйтесь до нас</p>
@@ -42,23 +33,37 @@ export default function optInSection() {
         Побудуй <br />
         Свою кар'єру
       </p>
-      <form class="telegram-form" id="message-form">
+      <form className="telegram-form" id="message-form" onSubmit={formHandler}>
         <div id="inputsInOptSection">
           <div id="inputInOptSection1">
             <input
               type="text"
               placeholder="ім'я"
-              class="OptSection1"
+              className="OptSection1"
               id="message-input"
+              value={name}
+              onChange={(e)=>{setName(e.target.value)}}
             />
-            <input type="text" placeholder="Email" class="OptSection1" />
+            <input 
+              type="text"
+              placeholder="Email"
+              className="OptSection1"
+              value={email}
+              onChange={(e)=>{setEmail(e.target.value)}} />
           </div>
           <div id="inputInOptSection2">
-            <input type="text" placeholder="Прізвище" class="OptSection2" />
+            <input 
+              type="text" 
+              placeholder="Прізвище"
+              className="OptSection2"
+              value={surname}
+              onChange={(e)=>{setSurname(e.target.value)}} />
             <input
               type="text"
               placeholder="Номер телефону"
-              class="OptSection2"
+              className="OptSection2"
+              value={phone}
+              onChange={(e)=>{setPhone(e.target.value)}}
             />
           </div>
         </div>
@@ -67,9 +72,11 @@ export default function optInSection() {
           cols="30"
           rows="10"
           placeholder="Коротко про вас..."
+          value={message}
+          onChange={(e)=>{setMessage(e.target.value)}}
         ></textarea>
-        <button class="mainInfoButton" type="submit">
-          <p class="infoButtonText">Надіслати анкету</p>
+        <button className="mainInfoButton" type="submit">
+          <p className="infoButtonText">Надіслати анкету</p>
         </button>
       </form>
     </div>

@@ -10,25 +10,25 @@ export default function workBlock() {
   return (
     <div id="workBlock">
       <h2>РОБОТИ</h2>
-      <p class="titleService">Дагестан</p>
-      <p class="descriptionService">
+      <p className="titleService">Дагестан</p>
+      <p className="descriptionService">
         Буріння cвердловин на нафту, ця робота була виконана професіоналами за
         допомогою спеціальної техніки
       </p>
-      <div class="photoBlock">
-        <img src={photo1} class="photo" alt="workphoto" />
-        <img src={photo2} class="photo" alt="workphoto" />
-        <img src={photo3} class="photo" alt="workphoto" />
+      <div className="photoBlock">
+        <img src={photo1} className="photo" alt="workphoto" />
+        <img src={photo2} className="photo" alt="workphoto" />
+        <img src={photo3} className="photo" alt="workphoto" />
       </div>
-      <p class="titleService">Крим</p>
-      <p class="descriptionService">
+      <p className="titleService">Крим</p>
+      <p className="descriptionService">
         Буріння cвердловин на нафту та газ буровим комплексом УБВ-600 з
         використанням самохідного агрегату УПА50
       </p>
-      <div class="photoBlock">
-        <img src={photo4} class="photo" alt="workphoto" />
-        <img src={photo5} class="photo" alt="workphoto" />
-        <img src={photo6} class="photo" alt="workphoto" />
+      <div className="photoBlock">
+        <img src={photo4} className="photo" alt="workphoto" />
+        <img src={photo5} className="photo" alt="workphoto" />
+        <img src={photo6} className="photo" alt="workphoto" />
       </div>
     </div>
   );

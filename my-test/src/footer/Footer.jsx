@@ -6,7 +6,7 @@ export default function Footer() {
         
     <footer>
         <img src={footerLogo} alt=""/>
-        <p class="titleService">
+        <p className="titleService">
             PP_NADRA@ukr.net <br/>
             380 (67) 342 43 91
         </p>
